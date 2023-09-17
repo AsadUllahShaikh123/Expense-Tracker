@@ -1,13 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<%@include file="components/allCss.jsp" %>
+<%@include file="components/allCss.jsp"%>
+<style>
+.shadow {
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+</style>
 </head>
-<body>
-	<%@include file="components/navbar.jsp" %>
+<body class="bg-light">
+	<%@include file="components/navbar.jsp"%>
+	<div class="container p-5">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card shadow">
+					<div class="card-header">
+						<p class="text-center fs-3 fw-bold">Login</p>
+					</div>
+					<div class="card-body">
+						<form action="" method="post">
+
+							<div class="mb-3">
+								<label class="fw-bold">Email</label><input type="email"
+									name="email" class="form-control" />
+							</div>
+							<div class="mb-3">
+								<label class="fw-bold">Password</label><input type="password"
+									name="password" class="form-control" />
+							</div>
+							<button class="btn btn-success col-md-12 mt-5 mb-3">Register</button>
+							<div class="text-center">
+								Don't have an account <a href="register.jsp "
+									class="text-decoration-none">create one</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
