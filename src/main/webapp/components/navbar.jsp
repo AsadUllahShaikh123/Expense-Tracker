@@ -22,10 +22,10 @@
      </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="login.jsp"><i class="fa-solid fa-right-to-bracket fa-fade"></i> Login</a>
+          <a class="nav-link active" href="login.jsp"><i class="fa-solid fa-right-to-bracket "></i> Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="register.jsp"><i class="fa-solid fa-user-plus"></i> Register</a>
+          <a class="nav-link active" href="register.jsp"><i class="fa-solid fa-user-plus fa-fade"></i> Register</a>
         </li>
       </ul>
       
