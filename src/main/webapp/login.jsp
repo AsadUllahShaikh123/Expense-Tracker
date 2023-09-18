@@ -24,8 +24,12 @@
 					<div class="card-header">
 						<p class="text-center fs-3 fw-bold">Login</p>
 					</div>
+					<c:if test="${ not empty msg }">
+						<p class="text-center fs-3 fw-bold text-success">${ msg }</p>
+						<c:remove var="msg" scope="session"/>
+					</c:if>
 					<c:if test="${ not empty errorMsg }">
-						<p class="text-center fs-3 text-warning">${ errorMsg }</p>
+						<p class="text-center fs-3 text-danger">${ errorMsg }</p>
 						<c:remove var="errorMsg" scope="session"/>
 					</c:if>
 					<div class="card-body">

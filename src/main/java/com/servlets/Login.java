@@ -32,6 +32,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("errorMsg","Incorrect email or password" );
 			response.sendRedirect("login.jsp");
 		}else {
+			session.setAttribute("loginUser", user);
 			response.sendRedirect("user/home.jsp");
 		}
 		
