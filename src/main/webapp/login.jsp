@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- By Default Expression Language is ignored in JSP  --%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +24,12 @@
 					<div class="card-header">
 						<p class="text-center fs-3 fw-bold">Login</p>
 					</div>
+					<c:if test="${ not empty errorMsg }">
+						<p class="text-center fs-3 text-warning">${ errorMsg }</p>
+						<c:remove var="errorMsg" scope="session"/>
+					</c:if>
 					<div class="card-body">
-						<form action="" method="post">
+						<form action="login" method="post">
 
 							<div class="mb-3">
 								<label class="fw-bold">Email</label><input type="email"

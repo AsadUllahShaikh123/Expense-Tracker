@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<%-- By Default Expression Language is ignored in JSP  --%>
+<%@ page isELIgnored="false"%><!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -24,29 +25,29 @@
 					</div>
 					<c:if test="${ not empty succMsg }">
 						<p class="text-center fs-3 text-success">${ succMsg }</p>
-						<c:remove var="succMsg" scope="session"/>
+						<c:remove var="succMsg" scope="session" />
 					</c:if>
 					<c:if test="${ not empty errorMsg }">
-						<p>${ errorMsg }</p>
-						<c:remove var="errorMsg" scope="session"/>						
+						<p class="text-center fs-3 text-warning">${ errorMsg }</p>
+						<c:remove var="errorMsg" scope="session" />
 					</c:if>
 					<div class="card-body">
 						<form action="userRegister" method="post">
 							<div class="mb-3">
-								<label class="fw-bold">Enter Full Name</label><input type="text" name="fullName"
-									class="form-control" required/>
+								<label class="fw-bold">Enter Full Name</label><input type="text"
+									name="fullName" class="form-control" required />
 							</div>
 							<div class="mb-3">
-								<label class="fw-bold">Email</label><input type="email" name="email"
-									class="form-control" required/>
+								<label class="fw-bold">Email</label><input type="email"
+									name="email" class="form-control" required />
 							</div>
 							<div class="mb-3">
-								<label class="fw-bold">Password</label><input type="password" name="password"
-									class="form-control" required/>
+								<label class="fw-bold">Password</label><input type="password"
+									name="password" class="form-control" required />
 							</div>
 							<div class="mb-3">
-								<label class="fw-bold">About</label><input type="text" name="about"
-									class="form-control" required/>
+								<label class="fw-bold">About</label><input type="text"
+									name="about" class="form-control" required />
 							</div>
 
 							<button class="btn btn-success col-md-12 mt-5 mb-3">Register</button>

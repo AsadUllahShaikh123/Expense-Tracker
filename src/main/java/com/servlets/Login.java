@@ -13,31 +13,28 @@ import com.dao.UserDao;
 import com.db.HibernateUtils;
 import com.entity.User;
 
-@WebServlet("/userRegister")
-public class UserRegister extends HttpServlet {
-	
-
+/**
+ * Servlet implementation class Login
+ */
+@WebServlet("/login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String name = request.getParameter("fullName");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String about = request.getParameter("about");
 		
-		User user = new User(name,email,password,about);
 		UserDao dao = new UserDao(HibernateUtils.getSessionFactory());
 		
+		User user = dao.userLogin(email, password);
 		HttpSession session = request.getSession();
-		boolean registered = dao.registerUser(user);
-		if(registered) {
-			session.setAttribute("succMsg", "User Registered Successfully");
-			response.sendRedirect("register.jsp");
+		if(user == null) {
+			session.setAttribute("errorMsg","Incorrect email or password" );
+			response.sendRedirect("login.jsp");
 		}else {
-			session.setAttribute("errorMsg", "Something wrong on server");
-			response.sendRedirect("register.jsp");
+			response.sendRedirect("user/home.jsp");
 		}
+		
 	}
 
 }
