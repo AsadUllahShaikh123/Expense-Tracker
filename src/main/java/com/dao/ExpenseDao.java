@@ -11,6 +11,7 @@ import org.hibernate.query.Query;
 import com.entity.Expense;
 import com.entity.User;
 
+
 public class ExpenseDao {
 
 	private SessionFactory factory = null;
