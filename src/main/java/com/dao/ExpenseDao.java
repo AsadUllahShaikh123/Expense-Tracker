@@ -1,10 +1,15 @@
 package com.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.entity.Expense;
+import com.entity.User;
 
 public class ExpenseDao {
 
@@ -37,4 +42,23 @@ public class ExpenseDao {
 		return saved;
 		
 	}
+	public List<Expense> getAllExpensesByUser(User user){
+		List<Expense> expenses = new ArrayList<Expense>();;
+		
+		session = factory.openSession();
+		Query<Expense> query = session.createQuery("from Expense where user=:user");
+		query.setParameter("user",user);
+		expenses = query.list();		
+		
+		return expenses;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
