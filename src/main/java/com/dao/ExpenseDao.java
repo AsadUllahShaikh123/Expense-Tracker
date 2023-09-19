@@ -53,9 +53,64 @@ public class ExpenseDao {
 		return expenses;
 	}
 	
+	public void editExpense(Expense expense) {
+		
+	}
+	public Expense getExpenseById(int id) {
+		Expense expense = null;
+		
+		session =factory.openSession();
+		
+		expense = session.get(Expense.class, id);
+		
+		return expense;
+	}
 	
+	public boolean updateExpense(Expense expense) {
+		boolean saved = false;
+		try {
+		      session = factory.openSession();
+		      tx = session.beginTransaction();
+		      Expense expense1 = session.get(Expense.class, expense.getId());
+		      expense1.setTitle(expense.getTitle());
+		      expense1.setDescription(expense.getDescription());
+		      expense1.setDate(expense.getDate());
+		      expense1.setTime(expense.getTime());
+		      expense1.setPrice(expense.getPrice());
+		      expense1.setUser(expense.getUser());
+		      session.update(expense1);
+		      tx.commit();
+		      saved = true;
+		}catch(Exception e) {
+			if(tx!=null) {
+				saved =  false;
+			}
+			e.printStackTrace();
+			
+		}
+		session.close();		
+		
+		return saved;
+		
+	}
 	
-	
+	public boolean deleteExpense(int id) {
+		boolean deleted = false;
+		try {
+			session = factory.openSession();
+			tx = session.beginTransaction();
+			Expense expense = session.get(Expense.class, id);
+			session.remove(expense);
+			tx.commit();
+			deleted = true;
+		}catch(Exception e) {
+			if(tx!=null) {
+				deleted = false;
+			}
+		}
+		
+		return deleted;
+	}
 	
 	
 	

@@ -30,8 +30,16 @@
 			<div class="col-md-12">
 				<div class="card shadow mt-3">
 					<div class="card-header text-center">
-						<p class="fs-3 fw-bold">Add Expenses</p>
+						<p class="fs-3 fw-bold">View Expenses</p>
 					</div>
+					<c:if test="${ not empty succMsg }">
+						<p class="text-center fs-3 text-success">${ succMsg }</p>
+						<c:remove var="succMsg" scope="session"/>
+					</c:if>
+					<c:if test="${ not empty errorMsg }">
+						<p class="text-center fs-3 text-danger">${ errorMsg }</p>
+						<c:remove var="errorMsg" scope="session"/>
+					</c:if>
 					<div class="card-body">
 					
 						<table class="table">
@@ -62,8 +70,8 @@
 										<td><%=expense.getTime() %></td>
 										<td><%=expense.getPrice() %></td>
 										<td>
-											<a href="edit.jsp?id=<%= expense.getId() %>" class="btn btn-primary btn-sm me-1">Edit</a>
-											<a href="delete.jsp?id=<%=expense.getId() %>" class="btn btn-danger btn-sm me-1">Delete</a>
+											<a href="edit_expense.jsp?id=<%= expense.getId() %>" class="btn btn-primary btn-sm me-1">Edit</a>
+											<a href="../delete_expense?id=<%=expense.getId() %>" class="btn btn-danger btn-sm me-1">Delete</a>
 										</td>
 									</tr>
 								<% } %>
