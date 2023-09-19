@@ -1,3 +1,4 @@
+<%@page import="com.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -13,7 +14,6 @@
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 </style>
-
 <%@include file="../components/allCss.jsp"%>
 </head>
 <body class="bg-light">
@@ -25,8 +25,17 @@
 					<div class="card-header fs-4 fw-bold text-center">
 						Add Expense
 					</div>
+					<c:if test="${ not empty succMsg }">
+						<p class="text-center fs-3 text-success">${ succMsg }</p>
+						<c:remove var="succMsg" scope="session"/>
+					</c:if>
+					<c:if test="${ not empty errorMsg }">
+						<p class="text-center fs-3 text-danger">${ errorMsg }</p>
+						<c:remove var="errorMsg" scope="session"/>
+					</c:if>
 					<div class="card-body">
 						<form action ="../add_expense" method = "post">
+							
 							<div class="mb-3">
 								<label>Title</label>
 								<input type="text" name="title" class="form-control"/>
@@ -37,7 +46,7 @@
 							</div>
 							<div class="mb-3">
 								<label>Time</label>
-								<input type="date" name="time" class="form-control"/>
+								<input type="time" name="time" class="form-control"/>
 							</div>
 							<div class="mb-3">
 								<label>Description</label>
