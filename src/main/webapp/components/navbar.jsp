@@ -13,19 +13,18 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="index.jsp"><i
+			<c:if test="${ not empty loginUser }">
+				<a class="navbar-brand" href="index.jsp"><i
 				class="fa-solid fa-money-check"></i> Expense Tracker</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			</c:if>
+			<c:if test="${ empty loginUser }">
+				<a class="navbar-brand" href="index.jsp"><i
+				class="fa-solid fa-money-check"></i> Expense Tracker</a>
+			</c:if>
+			
+			
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="index.jsp"><i
-							class="fa-solid fa-house"></i> Home</a></li>
 					<c:if test="${ not empty loginUser }">
 						<li class="nav-item"><a class="nav-link active" href="add_expense.jsp">
 								<i class="fa-solid fa-plus"></i> Add Expense
