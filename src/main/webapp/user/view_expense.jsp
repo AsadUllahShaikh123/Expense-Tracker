@@ -22,7 +22,7 @@
 </head>
 <body>
 	<c:if test="${ empty loginUser }">
-		<c:redirect></c:redirect>
+		<c:redirect url="../login.jsp"></c:redirect>
 	</c:if>
 	<%@include file="../components/navbar.jsp"%>
 	<div class="container">
